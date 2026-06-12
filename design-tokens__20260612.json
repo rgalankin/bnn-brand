@@ -1,0 +1,394 @@
+{
+  "meta": {
+    "brand": "Бизнес на нейронах",
+    "version": "2.0",
+    "created": "2026-06-12",
+    "concept": "Renaissance meets Futurism"
+  },
+  "colors": {
+    "circuit_deep": {
+      "name": "Circuit Deep",
+      "hex": "#0A1628",
+      "rgb": "rgb(10, 22, 40)",
+      "role": "Основной тёмный фон. Глубина, серьёзность, пространство.",
+      "usage": ["фон страниц", "фон секций", "фон карточек"],
+      "never": ["текст на светлом фоне", "иконки"]
+    },
+    "marble_white": {
+      "name": "Marble White",
+      "hex": "#F5F0E8",
+      "rgb": "rgb(245, 240, 232)",
+      "role": "Основной светлый фон. Тепло, классика, читаемость.",
+      "usage": ["светлые страницы", "текст на тёмном фоне", "светлые карточки"],
+      "never": ["фон логотипа без охранной зоны"]
+    },
+    "renaissance_gold": {
+      "name": "Renaissance Gold",
+      "hex": "#C9A84C",
+      "rgb": "rgb(201, 168, 76)",
+      "role": "Акцент — мастерство, ценность, проверенное временем.",
+      "usage": ["заголовки на тёмном фоне", "ключевые цифры в кейсах", "логотип (рука человека)", "иконки в документах", "hover-состояния"],
+      "never": ["фоновый цвет для больших блоков", "в равных долях с Neural Teal"]
+    },
+    "neural_teal": {
+      "name": "Neural Teal",
+      "hex": "#00B4D8",
+      "rgb": "rgb(0, 180, 216)",
+      "role": "AI, агенты, технологический слой.",
+      "usage": ["механическая рука логотипа", "UI-кнопки", "Telegram-визуалы про агентов", "технические акценты"],
+      "never": ["контексты про людей", "команда", "история", "ценности"]
+    },
+    "fresco_terracotta": {
+      "name": "Fresco Terracotta",
+      "hex": "#C67B5C",
+      "rgb": "rgb(198, 123, 92)",
+      "role": "Человек, история, команда, тепло.",
+      "usage": ["секции про CEO и команду", "origin story", "человеческие контексты", "тёплые визуалы"],
+      "never": ["AI и технологические контексты"]
+    }
+  },
+  "typography": {
+    "serif": {
+      "family": "Cormorant Garamond",
+      "source": "Google Fonts",
+      "import": "@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap')",
+      "usage": "H1, цитаты, эпиграфы",
+      "weights": {
+        "light": 300,
+        "regular": 400,
+        "semibold": 600
+      },
+      "never": "Bold Italic (теряет изящество)"
+    },
+    "sans": {
+      "family": "Space Grotesk",
+      "source": "Google Fonts",
+      "import": "@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap')",
+      "usage": "Тело текста, UI, метрики, H2–H4",
+      "weights": {
+        "light": 300,
+        "regular": 400,
+        "medium": 500,
+        "bold": 700
+      }
+    },
+    "mono": {
+      "family": "JetBrains Mono",
+      "source": "Google Fonts",
+      "usage": "Код, технические данные, hex-коды"
+    },
+    "scale": {
+      "h1": { "font": "Cormorant Garamond", "size": "48px", "weight": 400, "lineHeight": 1.2 },
+      "h2": { "font": "Space Grotesk", "size": "32px", "weight": 700, "lineHeight": 1.3 },
+      "h3": { "font": "Space Grotesk", "size": "24px", "weight": 500, "lineHeight": 1.4 },
+      "h4": { "font": "Space Grotesk", "size": "20px", "weight": 500, "lineHeight": 1.4 },
+      "body": { "font": "Space Grotesk", "size": "16px", "weight": 400, "lineHeight": 1.6 },
+      "caption": { "font": "Space Grotesk", "size": "13px", "weight": 400, "lineHeight": 1.5 },
+      "metric": { "font": "Space Grotesk", "size": "36px", "weight": 700, "lineHeight": 1.1 },
+      "quote": { "font": "Cormorant Garamond", "size": "28px", "weight": 300, "lineHeight": 1.5 }
+    },
+    "rules": [
+      "H1 только Cormorant Garamond, минимум 32px",
+      "Тело текста только Space Grotesk",
+      "Метрики и цифры — Space Grotesk Bold 36px+",
+      "Не смешивать шрифты в одном заголовке",
+      "Cormorant Garamond Bold Italic — запрещён"
+    ]
+  },
+  "spacing": {
+    "base": "8px",
+    "xs": "4px",
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px",
+    "xl": "40px",
+    "xxl": "64px",
+    "section": "80px",
+    "page_margin": "60px"
+  },
+  "logo": {
+    "concept": "Сотворение Адама — момент передачи искры",
+    "human_hand_color": "#C9A84C",
+    "robot_hand_color": "#00B4D8",
+    "robot_hand_color_rule": "Neural Teal (#00B4D8) — неизменен абсолютно",
+    "clearspace": "высота одной «руки» со всех сторон (~18% высоты изображения)",
+    "clearspace_unit": "1x = высота одной руки логотипа",
+    "min_size_digital": "120px",
+    "min_size_digital_note": "при меньшем размере детали нечитаемы",
+    "min_size_print": "25mm",
+    "aspect_ratio": "1.35:1 (ширина к высоте кадра)",
+    "object_position": "center 45% (смещение вниз — руки в центре кадра)",
+    "forbidden": [
+      "тень",
+      "свечение",
+      "поворот",
+      "деформация",
+      "перекраска механической руки",
+      "низкое разрешение"
+    ]
+  },
+  "contrast_pairs": {
+    "_note": "Данные из Claude Design v2.0 секция 03. WCAG AA = 4.5:1 для текста, AAA = 7:1",
+    "wcag_pass": [
+      {
+        "text_color": "#C9A84C",
+        "text_name": "Renaissance Gold",
+        "bg_color": "#0A1628",
+        "bg_name": "Circuit Deep",
+        "ratio": "7.9:1",
+        "level": "AAA",
+        "use": "Заголовки Cormorant Garamond, акцентные числа на тёмном фоне"
+      },
+      {
+        "text_color": "#00B4D8",
+        "text_name": "Neural Teal",
+        "bg_color": "#0A1628",
+        "bg_name": "Circuit Deep",
+        "ratio": "7.4:1",
+        "level": "AAA",
+        "use": "AI-данные, чипы агентов, технические акценты — только на тёмном"
+      },
+      {
+        "text_color": "#F5F0E8",
+        "text_name": "Marble White",
+        "bg_color": "#0A1628",
+        "bg_name": "Circuit Deep",
+        "ratio": "16:1",
+        "level": "AAA",
+        "use": "Основной текст, подписи на тёмном фоне"
+      },
+      {
+        "text_color": "#C67B5C",
+        "text_name": "Fresco Terracotta",
+        "bg_color": "#0A1628",
+        "bg_name": "Circuit Deep",
+        "ratio": "5.5:1",
+        "level": "AA",
+        "use": "Тёплые акценты, нумерация 'нет'-списков — только крупный текст (18px+)"
+      },
+      {
+        "text_color": "#0A1628",
+        "text_name": "Circuit Deep",
+        "bg_color": "#F5F0E8",
+        "bg_name": "Marble White",
+        "ratio": "16:1",
+        "level": "AAA",
+        "use": "Основной текст, заголовки на светлом фоне"
+      },
+      {
+        "text_color": "#0A1628",
+        "text_name": "Circuit Deep",
+        "bg_color": "#C9A84C",
+        "bg_name": "Renaissance Gold",
+        "ratio": "7.9:1",
+        "level": "AAA",
+        "use": "Текст на кнопках и плашках Gold-фона (CTA-кнопки)"
+      }
+    ],
+    "wcag_fail_decorative_only": [
+      {
+        "text_color": "#C9A84C",
+        "text_name": "Renaissance Gold",
+        "bg_color": "#F5F0E8",
+        "bg_name": "Marble White",
+        "ratio": "2.0:1",
+        "level": "FAIL",
+        "use": "Только линии, разделители, плашки, крупная графика. НЕ для текста никогда."
+      },
+      {
+        "text_color": "#00B4D8",
+        "text_name": "Neural Teal",
+        "bg_color": "#F5F0E8",
+        "bg_name": "Marble White",
+        "ratio": "2.2:1",
+        "level": "FAIL",
+        "use": "Только линии, декоративные плашки. НЕ для текста никогда."
+      }
+    ],
+    "rule": "На светлом фоне #F5F0E8 текст — всегда Circuit Deep #0A1628. Gold и Teal допустимы только как декор."
+  },
+  "gradients": {
+    "cover_фреска": {
+      "name": "Cover Overlay — вариант Фреска",
+      "css": "linear-gradient(to bottom, rgba(10,22,40,0.25) 0%, rgba(10,22,40,0.05) 35%, rgba(10,22,40,0.55) 70%, #0A1628 100%)",
+      "use": "Затемнение фотофона обложки. Даёт читаемость текста у низа при сохранении видимости фото вверху."
+    },
+    "selection_highlight": {
+      "name": "Gold Selection",
+      "css": "rgba(201, 168, 76, 0.35)",
+      "use": "::selection — выделение текста. Бренд-цвет даже при выделении."
+    }
+  },
+  "borders": {
+    "_rule": "Тени запрещены для логотипа. Карточки и блоки используют только border, не box-shadow.",
+    "card_on_dark": "1px solid rgba(245, 240, 232, 0.12)",
+    "card_on_light": "1px solid rgba(10, 22, 40, 0.10)",
+    "card_white_on_light": "background: #FFFFFF; border: 1px solid rgba(10, 22, 40, 0.10)",
+    "card_accent_top": "border-top: 2px solid #C9A84C",
+    "card_accent_terracotta": "border: 1px solid #C67B5C",
+    "section_divider_dark": "1px solid rgba(201, 168, 76, 0.18)",
+    "section_divider_light": "1px solid rgba(10, 22, 40, 0.15)",
+    "logo_clearspace_demo": "1px dashed rgba(10, 22, 40, 0.35) — для демонстрации охранной зоны",
+    "teal_glow_FORBIDDEN": "box-shadow: 0 0 24px 6px rgba(0,180,216,0.9) — ЗАПРЕЩЕНО, нельзя применять к логотипу"
+  },
+  "layout": {
+    "sidebar_width": "224px",
+    "content_max_width": "1040px",
+    "section_padding_vertical": "104px",
+    "section_padding_horizontal": "72px",
+    "cover_text_padding": "0 72px 84px 72px",
+    "card_gap_large": "40px",
+    "card_gap_medium": "20px",
+    "card_padding_standard": "30px 32px",
+    "card_padding_compact": "26px 28px"
+  },
+  "templates": {
+    "post_1_1": {
+      "size_px": "420x420px",
+      "aspect_ratio": "1:1",
+      "background": "#0A1628",
+      "padding": "36px",
+      "metric_font": "Space Grotesk Bold 64px",
+      "metric_color": "#C9A84C",
+      "teal_use": "только chip агента (#00B4D8 + border 1px solid rgba(0,180,216,0.4))",
+      "rule": "Цифра первой. Без хайпа. Без эмодзи."
+    },
+    "business_card_front": {
+      "size_mm": "85.6x54mm",
+      "size_px": "340x214px",
+      "background": "#FFFFFF",
+      "padding": "26px 28px",
+      "name_font": "Cormorant Garamond Regular 30px",
+      "title_font": "Space Grotesk 13px",
+      "contacts_font": "JetBrains Mono 11px",
+      "accent": "40px gold line top-left"
+    },
+    "business_card_back": {
+      "background": "#0A1628",
+      "logo_size": "200x120px",
+      "logo_position": "center"
+    },
+    "slide_16_9": {
+      "max_width": "880px",
+      "aspect_ratio": "16/9",
+      "background": "#0A1628",
+      "padding": "48px 56px",
+      "h1_font": "Cormorant Garamond Light 48px",
+      "h1_color": "#C9A84C",
+      "metric_font": "Space Grotesk Bold 36px",
+      "metric_color": "#F5F0E8",
+      "kicker_font": "JetBrains Mono 11px letter-spacing 0.22em uppercase",
+      "kicker_color": "#00B4D8",
+      "kicker_rule": "Teal только в кикере если контекст — агенты/AI. Один фон, без градиентов."
+    }
+  },
+  "emoji_palette": {
+    "allowed": {
+      "🧠": "AI / интеллект",
+      "⚡": "скорость / результат",
+      "🎯": "точность / цель",
+      "💡": "идея / insight",
+      "📌": "важное / закрепить",
+      "✅": "подтверждение / выполнено",
+      "→": "логика / переход (текстовый символ)"
+    },
+    "forbidden": {
+      "🔥": "инфантильный хайп",
+      "💯": "инфантильный хайп",
+      "🚀": "банальность стартапов",
+      "🙏": "заискивание",
+      "😍": "инфантильный тон",
+      "🥳": "инфантильный тон",
+      "💸": "вульгарность"
+    },
+    "rules": [
+      "Максимум 7 эмодзи на пост",
+      "Только в начале строки или конце предложения",
+      "Никогда в середине предложения"
+    ]
+  },
+  "forbidden_words": [
+    "революционный",
+    "прорывной",
+    "трансформирует",
+    "меняет всё",
+    "беспрецедентный",
+    "полностью автоматизирует",
+    "лидер мнений",
+    "инновационный",
+    "экосистема",
+    "значительно улучшили",
+    "существенный ROI",
+    "будущее уже здесь",
+    "AI заменит человека",
+    "без выходных без декретов без налогов",
+    "ООО Кредо-Сервис",
+    "Бизнес на нейронах (в ZaBota-коммуникациях)"
+  ],
+  "tov_principles": [
+    {
+      "id": 1,
+      "name": "Сначала вывод",
+      "rule": "Не подводи читателя к мысли — скажи её сразу, потом объясни"
+    },
+    {
+      "id": 2,
+      "name": "Конкретика, не декларации",
+      "rule": "Если есть число — называй число. «Значительно» — не слово для БНН"
+    },
+    {
+      "id": 3,
+      "name": "Ограничения — сила",
+      "rule": "Честность про ограничения — признак зрелости, а не уязвимость"
+    },
+    {
+      "id": 4,
+      "name": "Без AI-хайпа",
+      "rule": "Запрещены: революционный, прорывной, меняет всё, будущее уже здесь"
+    },
+    {
+      "id": 5,
+      "name": "Равный с равным",
+      "rule": "Аудитория — предприниматели. Говори как равный с равным, не ментор с кафедры"
+    },
+    {
+      "id": 6,
+      "name": "237 агентов — аргумент",
+      "rule": "Цифра появляется только там, где доказывает что-то конкретное"
+    },
+    {
+      "id": 7,
+      "name": "CEO — практик, не гуру",
+      "rule": "Позиция: я иду впереди не потому что умнее — а потому что начал раньше"
+    },
+    {
+      "id": 8,
+      "name": "Кейс — история",
+      "rule": "Кейс: проблема → агент → измеримый результат. Функции внутри, не снаружи"
+    },
+    {
+      "id": 9,
+      "name": "Короткие предложения — акцент",
+      "rule": "Когда мысль важная — делай предложение коротким. Пауза работает на акцент"
+    },
+    {
+      "id": 10,
+      "name": "Без заискивания",
+      "rule": "Никаких 🙏, никаких «благодарим за доверие». Бренд говорит с позиции результата"
+    },
+    {
+      "id": 11,
+      "name": "Urgency — точка входа",
+      "rule": "Urgency + конкретный шаг = мотивация. Urgency без пути = манипуляция"
+    },
+    {
+      "id": 12,
+      "name": "Экономический язык",
+      "rule": "ROI, время, рубли. «Значительная экономия» — запрещено. Только конкретные числа"
+    }
+  ],
+  "brand_promise": "Мастерство, усиленное технологией. Ты станешь сверхпредпринимателем.",
+  "brand_personality": ["Мастерство", "Честность", "Конкретность"],
+  "archetypes": ["Архитектор", "Практик", "Наставник"],
+  "kasparov_formula": "Человек + AI > чистый AI"
+}

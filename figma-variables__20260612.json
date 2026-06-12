@@ -1,0 +1,379 @@
+{
+  "$schema": "https://www.figma.com/variables/v1",
+  "meta": {
+    "brand": "Бизнес на нейронах",
+    "version": "2.0",
+    "created": "2026-06-12",
+    "concept": "Renaissance meets Futurism",
+    "figma_plugin_format": "Variables API v1"
+  },
+  "collections": [
+    {
+      "id": "col/colors",
+      "name": "Colors",
+      "hiddenFromPublishing": false,
+      "modes": [
+        { "modeId": "mode/light", "name": "Light (Marble)" },
+        { "modeId": "mode/dark",  "name": "Dark (Circuit)" }
+      ],
+      "variables": [
+        {
+          "id": "var/color/circuit-deep",
+          "name": "Circuit Deep",
+          "description": "Основной тёмный фон. Глубина, серьёзность, профессионализм. НИКОГДА как цвет текста на тёмных элементах.",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "mode/light": { "r": 0.039, "g": 0.086, "b": 0.157, "a": 1 },
+            "mode/dark":  { "r": 0.039, "g": 0.086, "b": 0.157, "a": 1 }
+          },
+          "scopes": ["ALL_FILLS", "FRAME_FILL", "SHAPE_FILL"],
+          "codeSyntax": {
+            "WEB": "--color-circuit-deep",
+            "TAILWIND": "circuit-deep"
+          }
+        },
+        {
+          "id": "var/color/marble-white",
+          "name": "Marble White",
+          "description": "Основной светлый фон. Тёплый белый — НЕ #FFFFFF, иначе теряется теплота. Текст на тёмном фоне.",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "mode/light": { "r": 0.961, "g": 0.941, "b": 0.910, "a": 1 },
+            "mode/dark":  { "r": 0.961, "g": 0.941, "b": 0.910, "a": 1 }
+          },
+          "scopes": ["ALL_FILLS", "TEXT_FILL"],
+          "codeSyntax": {
+            "WEB": "--color-marble-white",
+            "TAILWIND": "marble-white"
+          }
+        },
+        {
+          "id": "var/color/renaissance-gold",
+          "name": "Renaissance Gold",
+          "description": "Главный акцент — мастерство, ценность. Заголовки на тёмном фоне, ключевые цифры. НЕ использовать как фон для больших блоков. Один из двух доминирует.",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "mode/light": { "r": 0.788, "g": 0.659, "b": 0.298, "a": 1 },
+            "mode/dark":  { "r": 0.788, "g": 0.659, "b": 0.298, "a": 1 }
+          },
+          "scopes": ["ALL_FILLS", "TEXT_FILL", "STROKE_COLOR"],
+          "codeSyntax": {
+            "WEB": "--color-gold",
+            "TAILWIND": "renaissance-gold"
+          }
+        },
+        {
+          "id": "var/color/neural-teal",
+          "name": "Neural Teal",
+          "description": "СТРОГО для AI, агентов, технологий. НИКОГДА в контекстах про людей, команду, историю, ценности. Цвет механической руки логотипа — неизменен.",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "mode/light": { "r": 0.000, "g": 0.706, "b": 0.847, "a": 1 },
+            "mode/dark":  { "r": 0.000, "g": 0.706, "b": 0.847, "a": 1 }
+          },
+          "scopes": ["ALL_FILLS", "TEXT_FILL", "STROKE_COLOR"],
+          "codeSyntax": {
+            "WEB": "--color-teal",
+            "TAILWIND": "neural-teal"
+          }
+        },
+        {
+          "id": "var/color/fresco-terracotta",
+          "name": "Fresco Terracotta",
+          "description": "СТРОГО для людей, CEO, команды, истории, ценностей. НИКОГДА в контекстах автоматизации и агентов.",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "mode/light": { "r": 0.776, "g": 0.482, "b": 0.361, "a": 1 },
+            "mode/dark":  { "r": 0.776, "g": 0.482, "b": 0.361, "a": 1 }
+          },
+          "scopes": ["ALL_FILLS", "TEXT_FILL"],
+          "codeSyntax": {
+            "WEB": "--color-terracotta",
+            "TAILWIND": "fresco-terracotta"
+          }
+        }
+      ]
+    },
+    {
+      "id": "col/typography",
+      "name": "Typography",
+      "hiddenFromPublishing": false,
+      "modes": [
+        { "modeId": "mode/default", "name": "Default" }
+      ],
+      "variables": [
+        {
+          "id": "var/type/h1-size",
+          "name": "H1/Font Size",
+          "description": "Cormorant Garamond. Главный заголовок страницы/секции. Минимум 32px.",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 48 },
+          "scopes": ["FONT_SIZE"]
+        },
+        {
+          "id": "var/type/h1-weight",
+          "name": "H1/Font Weight",
+          "description": "Regular (400) — НИКОГДА Bold Italic: теряет изящество",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 400 },
+          "scopes": ["FONT_WEIGHT"]
+        },
+        {
+          "id": "var/type/h1-line-height",
+          "name": "H1/Line Height",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 1.2 },
+          "scopes": ["LINE_HEIGHT"]
+        },
+        {
+          "id": "var/type/h1-family",
+          "name": "H1/Font Family",
+          "resolvedType": "STRING",
+          "valuesByMode": { "mode/default": "Cormorant Garamond" },
+          "scopes": ["FONT_FAMILY"]
+        },
+        {
+          "id": "var/type/h2-size",
+          "name": "H2/Font Size",
+          "description": "Space Grotesk Bold. Подзаголовки, разделы.",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 32 },
+          "scopes": ["FONT_SIZE"]
+        },
+        {
+          "id": "var/type/h2-weight",
+          "name": "H2/Font Weight",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 700 },
+          "scopes": ["FONT_WEIGHT"]
+        },
+        {
+          "id": "var/type/h2-line-height",
+          "name": "H2/Line Height",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 1.3 },
+          "scopes": ["LINE_HEIGHT"]
+        },
+        {
+          "id": "var/type/h2-family",
+          "name": "H2/Font Family",
+          "resolvedType": "STRING",
+          "valuesByMode": { "mode/default": "Space Grotesk" },
+          "scopes": ["FONT_FAMILY"]
+        },
+        {
+          "id": "var/type/h3-size",
+          "name": "H3/Font Size",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 24 },
+          "scopes": ["FONT_SIZE"]
+        },
+        {
+          "id": "var/type/h3-weight",
+          "name": "H3/Font Weight",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 500 },
+          "scopes": ["FONT_WEIGHT"]
+        },
+        {
+          "id": "var/type/h3-line-height",
+          "name": "H3/Line Height",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 1.4 },
+          "scopes": ["LINE_HEIGHT"]
+        },
+        {
+          "id": "var/type/h3-family",
+          "name": "H3/Font Family",
+          "resolvedType": "STRING",
+          "valuesByMode": { "mode/default": "Space Grotesk" },
+          "scopes": ["FONT_FAMILY"]
+        },
+        {
+          "id": "var/type/body-size",
+          "name": "Body/Font Size",
+          "description": "Space Grotesk Regular. Основной текст. ТОЛЬКО Space Grotesk.",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 16 },
+          "scopes": ["FONT_SIZE"]
+        },
+        {
+          "id": "var/type/body-weight",
+          "name": "Body/Font Weight",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 400 },
+          "scopes": ["FONT_WEIGHT"]
+        },
+        {
+          "id": "var/type/body-line-height",
+          "name": "Body/Line Height",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 1.6 },
+          "scopes": ["LINE_HEIGHT"]
+        },
+        {
+          "id": "var/type/body-family",
+          "name": "Body/Font Family",
+          "resolvedType": "STRING",
+          "valuesByMode": { "mode/default": "Space Grotesk" },
+          "scopes": ["FONT_FAMILY"]
+        },
+        {
+          "id": "var/type/caption-size",
+          "name": "Caption/Font Size",
+          "description": "Подписи, метки, footnote. Letter-spacing +0.04em.",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 13 },
+          "scopes": ["FONT_SIZE"]
+        },
+        {
+          "id": "var/type/caption-weight",
+          "name": "Caption/Font Weight",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 400 },
+          "scopes": ["FONT_WEIGHT"]
+        },
+        {
+          "id": "var/type/caption-line-height",
+          "name": "Caption/Line Height",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 1.5 },
+          "scopes": ["LINE_HEIGHT"]
+        },
+        {
+          "id": "var/type/caption-family",
+          "name": "Caption/Font Family",
+          "resolvedType": "STRING",
+          "valuesByMode": { "mode/default": "Space Grotesk" },
+          "scopes": ["FONT_FAMILY"]
+        },
+        {
+          "id": "var/type/metric-size",
+          "name": "Metric/Font Size",
+          "description": "Цифры кейсов, ROI, метрики. Space Grotesk Bold. Цвет — Gold или Teal.",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 36 },
+          "scopes": ["FONT_SIZE"]
+        },
+        {
+          "id": "var/type/metric-weight",
+          "name": "Metric/Font Weight",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 700 },
+          "scopes": ["FONT_WEIGHT"]
+        },
+        {
+          "id": "var/type/metric-line-height",
+          "name": "Metric/Line Height",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 1.1 },
+          "scopes": ["LINE_HEIGHT"]
+        },
+        {
+          "id": "var/type/metric-family",
+          "name": "Metric/Font Family",
+          "resolvedType": "STRING",
+          "valuesByMode": { "mode/default": "Space Grotesk" },
+          "scopes": ["FONT_FAMILY"]
+        },
+        {
+          "id": "var/type/mono-size",
+          "name": "Mono/Font Size",
+          "description": "Код, технические данные, hex-коды цветов.",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 14 },
+          "scopes": ["FONT_SIZE"]
+        },
+        {
+          "id": "var/type/mono-family",
+          "name": "Mono/Font Family",
+          "resolvedType": "STRING",
+          "valuesByMode": { "mode/default": "JetBrains Mono" },
+          "scopes": ["FONT_FAMILY"]
+        }
+      ]
+    },
+    {
+      "id": "col/spacing",
+      "name": "Spacing",
+      "hiddenFromPublishing": false,
+      "modes": [
+        { "modeId": "mode/default", "name": "Default" }
+      ],
+      "variables": [
+        {
+          "id": "var/space/xs",
+          "name": "Spacing/xs",
+          "description": "4px — минимальный отступ, иконки",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 4 },
+          "scopes": ["GAP", "WIDTH_HEIGHT", "FRAME_GAP"]
+        },
+        {
+          "id": "var/space/sm",
+          "name": "Spacing/sm",
+          "description": "8px — малый отступ, inline-элементы",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 8 },
+          "scopes": ["GAP", "WIDTH_HEIGHT", "FRAME_GAP"]
+        },
+        {
+          "id": "var/space/md",
+          "name": "Spacing/md",
+          "description": "16px — стандартный padding, base unit",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 16 },
+          "scopes": ["GAP", "WIDTH_HEIGHT", "FRAME_GAP"]
+        },
+        {
+          "id": "var/space/lg",
+          "name": "Spacing/lg",
+          "description": "24px — отступ между блоками",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 24 },
+          "scopes": ["GAP", "WIDTH_HEIGHT", "FRAME_GAP"]
+        },
+        {
+          "id": "var/space/xl",
+          "name": "Spacing/xl",
+          "description": "40px — крупные отступы внутри секций",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 40 },
+          "scopes": ["GAP", "WIDTH_HEIGHT", "FRAME_GAP"]
+        },
+        {
+          "id": "var/space/2xl",
+          "name": "Spacing/2xl",
+          "description": "64px — между крупными секциями",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 64 },
+          "scopes": ["GAP", "WIDTH_HEIGHT", "FRAME_GAP"]
+        },
+        {
+          "id": "var/space/3xl",
+          "name": "Spacing/3xl",
+          "description": "96px — hero-секции, максимальные отступы",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 96 },
+          "scopes": ["GAP", "WIDTH_HEIGHT", "FRAME_GAP"]
+        },
+        {
+          "id": "var/space/section",
+          "name": "Spacing/section",
+          "description": "80px — вертикальный padding секций лендинга",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 80 },
+          "scopes": ["GAP", "WIDTH_HEIGHT", "FRAME_GAP"]
+        },
+        {
+          "id": "var/space/page-margin",
+          "name": "Spacing/page-margin",
+          "description": "60px — горизонтальный margin страницы",
+          "resolvedType": "FLOAT",
+          "valuesByMode": { "mode/default": 60 },
+          "scopes": ["GAP", "WIDTH_HEIGHT", "FRAME_GAP"]
+        }
+      ]
+    }
+  ]
+}

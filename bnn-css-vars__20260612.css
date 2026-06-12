@@ -1,0 +1,384 @@
+/**
+ * Бизнес на нейронах — CSS Variables + Tailwind Config
+ * Version: 2.0 | Created: 2026-06-12
+ * Renaissance meets Futurism
+ *
+ * СТРУКТУРА:
+ *   1. Google Fonts imports
+ *   2. :root — CSS Custom Properties
+ *   3. Utility classes
+ *   4. Base typography reset
+ *   5. Tailwind theme.extend (в комментарии)
+ */
+
+/* ============================================================
+   1. FONTS
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+
+/* ============================================================
+   2. CSS CUSTOM PROPERTIES
+   ============================================================ */
+
+:root {
+
+  /* --------------------------------------------------
+     ЦВЕТА
+     Правило: Gold доминирует в Ренессанс-схеме,
+     Teal доминирует в Футуризм-схеме.
+     Никогда Gold + Teal в равных долях.
+  -------------------------------------------------- */
+
+  /* Основные фоны */
+  --color-circuit-deep:    #0A1628;   /* Основной тёмный фон. Глубина и серьёзность */
+  --color-marble-white:    #F5F0E8;   /* Основной светлый фон. Тепло и читаемость */
+
+  /* Акценты */
+  --color-gold:            #C9A84C;   /* Renaissance Gold — мастерство, ценность, заголовки */
+  --color-teal:            #00B4D8;   /* Neural Teal — AI, агенты, технология. ТОЛЬКО для tech-контекста */
+  --color-terracotta:      #C67B5C;   /* Fresco Terracotta — люди, история, тепло. ТОЛЬКО для human-контекста */
+
+  /* Производные (используй вместо прямых hex в UI) */
+  --color-bg-dark:         var(--color-circuit-deep);
+  --color-bg-light:        var(--color-marble-white);
+  --color-text-on-dark:    var(--color-marble-white);
+  --color-text-on-light:   var(--color-circuit-deep);
+  --color-accent-primary:  var(--color-gold);       /* Умолчание: Gold */
+  --color-accent-tech:     var(--color-teal);        /* Строго для AI/agent элементов */
+  --color-accent-human:    var(--color-terracotta);  /* Строго для CEO/команда/история */
+
+  /* Hover-состояния */
+  --color-gold-hover:      #B8962F;   /* Gold потемнее на 15% */
+  --color-teal-hover:      #009BB8;   /* Teal потемнее */
+
+  /* Overlay (для текста поверх фото) */
+  --overlay-dark:          rgba(10, 22, 40, 0.75);
+  --overlay-dark-heavy:    rgba(10, 22, 40, 0.90);
+
+  /* --------------------------------------------------
+     ТИПОГРАФИКА
+     Правило: H1 ТОЛЬКО Cormorant Garamond.
+     Тело ТОЛЬКО Space Grotesk.
+     Два шрифта на страницу — не больше.
+  -------------------------------------------------- */
+
+  --font-serif:    'Cormorant Garamond', Georgia, serif;
+  --font-sans:     'Space Grotesk', system-ui, sans-serif;
+  --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Размеры */
+  --text-h1:       48px;    /* Cormorant Garamond — главный заголовок */
+  --text-h1-large: 72px;    /* Hero-заголовки на лендинге */
+  --text-h2:       32px;    /* Space Grotesk Bold */
+  --text-h3:       24px;    /* Space Grotesk Medium */
+  --text-h4:       20px;    /* Space Grotesk Medium */
+  --text-body:     16px;    /* Space Grotesk Regular — основной текст */
+  --text-caption:  13px;    /* Space Grotesk Regular — подписи */
+  --text-metric:   36px;    /* Space Grotesk Bold — цифры кейсов */
+  --text-quote:    28px;    /* Cormorant Garamond Light Italic — цитаты CEO */
+
+  /* Вес */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Межстрочный интервал */
+  --leading-tight:   1.2;   /* H1 крупные заголовки */
+  --leading-snug:    1.3;   /* H2 */
+  --leading-normal:  1.5;   /* Тело */
+  --leading-relaxed: 1.6;   /* Длинные статьи */
+  --leading-quote:   1.5;   /* Цитаты */
+
+  /* Трекинг (letter-spacing) */
+  --tracking-wide:   0.04em;   /* Подписи и uppercase-лейблы */
+  --tracking-normal: 0;
+
+  /* --------------------------------------------------
+     SPACING
+     База: 8px. Все значения кратны 8 (или 4 для xs).
+  -------------------------------------------------- */
+
+  --space-xs:      4px;
+  --space-sm:      8px;
+  --space-md:      16px;
+  --space-lg:      24px;
+  --space-xl:      40px;
+  --space-2xl:     64px;
+  --space-3xl:     96px;
+  --space-section: 80px;   /* Отступ между секциями лендинга */
+  --space-page:    60px;   /* Горизонтальный margin страницы */
+
+  /* --------------------------------------------------
+     ОХРАННАЯ ЗОНА ЛОГОТИПА
+     Минимум от края до любых объектов рядом с логотипом.
+     Цифровой: 120px по длинной стороне минимум.
+  -------------------------------------------------- */
+
+  --logo-clearspace:  24px;    /* Минимум от края в соцсетях */
+  --logo-min-digital: 120px;
+
+  /* --------------------------------------------------
+     БОРДЕР-РАДИУСЫ
+  -------------------------------------------------- */
+
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-pill: 999px;
+
+  /* --------------------------------------------------
+     ТЕНИ
+     Не применять к логотипу. Только к UI-карточкам.
+  -------------------------------------------------- */
+
+  --shadow-card:  0 2px 12px rgba(10, 22, 40, 0.15);
+  --shadow-heavy: 0 8px 32px rgba(10, 22, 40, 0.30);
+
+  /* --------------------------------------------------
+     TRANSITIONS
+  -------------------------------------------------- */
+
+  --ease-standard: 200ms ease;
+  --ease-slow:     400ms ease;
+}
+
+
+/* ============================================================
+   3. UTILITY CLASSES
+   ============================================================ */
+
+/* --- Цвет текста --- */
+
+.text-gold        { color: var(--color-gold); }
+.text-teal        { color: var(--color-teal); }
+.text-terracotta  { color: var(--color-terracotta); }
+.text-deep        { color: var(--color-circuit-deep); }
+.text-marble      { color: var(--color-marble-white); }
+
+/* --- Цвет фона --- */
+
+.bg-deep          { background-color: var(--color-circuit-deep); }
+.bg-marble        { background-color: var(--color-marble-white); }
+.bg-gold          { background-color: var(--color-gold); }
+.bg-teal          { background-color: var(--color-teal); }
+
+/* --- Шрифты --- */
+
+.font-serif       { font-family: var(--font-serif); }
+.font-sans        { font-family: var(--font-sans); }
+.font-mono        { font-family: var(--font-mono); }
+
+/* --- Типографические стили --- */
+
+.type-h1 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  /* Использовать: главный заголовок страницы/секции */
+}
+
+.type-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h2);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+}
+
+.type-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+}
+
+.type-body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+}
+
+.type-caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-wide);
+  /* Использовать: подписи к фото, метки разделов, footnote */
+}
+
+.type-metric {
+  font-family: var(--font-sans);
+  font-size: var(--text-metric);
+  font-weight: var(--weight-bold);
+  line-height: 1.1;
+  color: var(--color-gold);
+  /* Использовать: цифры кейсов (40 часов, 237 агентов), ROI */
+}
+
+.type-quote {
+  font-family: var(--font-serif);
+  font-size: var(--text-quote);
+  font-weight: var(--weight-light);
+  font-style: italic;
+  line-height: var(--leading-quote);
+  color: var(--color-gold);
+  /* Использовать: цитаты CEO, философские высказывания */
+}
+
+.type-mono {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  /* Использовать: hex-коды, технические данные, код */
+}
+
+/* --- Схемы цветовых комбинаций --- */
+
+/* Ренессанс-схема: Gold доминирует */
+.scheme-renaissance {
+  background-color: var(--color-marble-white);
+  color: var(--color-circuit-deep);
+}
+.scheme-renaissance h1,
+.scheme-renaissance .type-h1 {
+  color: var(--color-gold);
+}
+
+/* Футуризм-схема: Teal доминирует */
+.scheme-futurism {
+  background-color: var(--color-circuit-deep);
+  color: var(--color-marble-white);
+}
+.scheme-futurism h1,
+.scheme-futurism .type-h1 {
+  color: var(--color-teal);
+}
+
+/* --- Акцент для AI-контекста --- */
+.accent-tech {
+  color: var(--color-teal);
+  /* Строго: только для элементов про AI/агентов */
+}
+
+/* --- Акцент для человеческого контекста --- */
+.accent-human {
+  color: var(--color-terracotta);
+  /* Строго: CEO, команда, история, origin story */
+}
+
+
+/* ============================================================
+   4. BASE TYPOGRAPHY RESET
+   ============================================================ */
+
+h1 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+}
+
+h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h2);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+}
+
+h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+}
+
+h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h4);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+/* Запрет: Cormorant Garamond Bold Italic — теряет изящество */
+h1 strong, h1 b,
+.type-h1 strong, .type-h1 b,
+.type-quote strong {
+  font-style: normal;
+  font-weight: var(--weight-semibold);
+}
+
+
+/* ============================================================
+   5. TAILWIND theme.extend CONFIG
+   (скопировать в tailwind.config.js / tailwind.config.ts)
+   ============================================================
+
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        "circuit-deep":   "#0A1628",
+        "marble-white":   "#F5F0E8",
+        "renaissance-gold": "#C9A84C",
+        "neural-teal":    "#00B4D8",
+        "fresco-terracotta": "#C67B5C",
+      },
+      fontFamily: {
+        serif: ["Cormorant Garamond", "Georgia", "serif"],
+        sans:  ["Space Grotesk", "system-ui", "sans-serif"],
+        mono:  ["JetBrains Mono", "Fira Code", "monospace"],
+      },
+      fontSize: {
+        "h1":      ["48px", { lineHeight: "1.2", fontWeight: "400" }],
+        "h1-lg":   ["72px", { lineHeight: "1.1", fontWeight: "400" }],
+        "h2":      ["32px", { lineHeight: "1.3", fontWeight: "700" }],
+        "h3":      ["24px", { lineHeight: "1.4", fontWeight: "500" }],
+        "h4":      ["20px", { lineHeight: "1.4", fontWeight: "500" }],
+        "body":    ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+        "caption": ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+        "metric":  ["36px", { lineHeight: "1.1", fontWeight: "700" }],
+        "quote":   ["28px", { lineHeight: "1.5", fontWeight: "300" }],
+      },
+      spacing: {
+        "xs":      "4px",
+        "sm":      "8px",
+        "md":      "16px",
+        "lg":      "24px",
+        "xl":      "40px",
+        "2xl":     "64px",
+        "3xl":     "96px",
+        "section": "80px",
+        "page":    "60px",
+      },
+      borderRadius: {
+        "sm":   "4px",
+        "md":   "8px",
+        "lg":   "12px",
+        "pill": "999px",
+      },
+      boxShadow: {
+        "card":  "0 2px 12px rgba(10, 22, 40, 0.15)",
+        "heavy": "0 8px 32px rgba(10, 22, 40, 0.30)",
+      },
+    },
+  },
+}
+
+*/

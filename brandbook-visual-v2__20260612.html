@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бизнес на нейронах — Брендбук v2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS ────────────────────────────────────────────── */
+  :root {
+    --circuit-deep:    #0A1628;
+    --marble-white:    #F5F0E8;
+    --gold:            #C9A84C;
+    --teal:            #00B4D8;
+    --terracotta:      #C67B5C;
+    --gold-dim:        rgba(201,168,76,0.12);
+    --teal-dim:        rgba(0,180,216,0.12);
+    --terra-dim:       rgba(198,123,92,0.12);
+    --serif:           'Cormorant Garamond', Georgia, serif;
+    --sans:            'Space Grotesk', system-ui, sans-serif;
+    --mono:            'JetBrains Mono', monospace;
+    /* theme tokens — dark default */
+    --bg-body:         #1a1a2e;
+    --bg-page:         #0A1628;
+    --text-main:       #F5F0E8;
+    --divider-clr:     rgba(245,240,232,0.12);
+    --card-bg:         rgba(245,240,232,0.04);
+    --card-bg2:        rgba(245,240,232,0.06);
+    --swatch-info:     rgba(245,240,232,0.06);
+    --principle-sep:   rgba(245,240,232,0.08);
+    --page-shadow:     0 4px 40px rgba(0,0,0,0.4);
+  }
+  [data-theme="light"] {
+    --bg-body:         #E8E3DA;
+    --bg-page:         #F5F0E8;
+    --text-main:       #0A1628;
+    --divider-clr:     rgba(10,22,40,0.12);
+    --card-bg:         rgba(10,22,40,0.05);
+    --card-bg2:        rgba(10,22,40,0.07);
+    --swatch-info:     rgba(10,22,40,0.06);
+    --principle-sep:   rgba(10,22,40,0.08);
+    --page-shadow:     0 4px 32px rgba(0,0,0,0.12);
+  }
+
+  /* ── RESET ─────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body { background: var(--bg-body); font-family: var(--sans); color: var(--text-main); transition: background 0.3s; }
+
+  /* ── PAGE ──────────────────────────────────────────────── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 16px;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--bg-page);
+    color: var(--text-main);
+    transition: background 0.3s, color 0.3s;
+  }
+  .page--light {
+    background: var(--marble-white);
+    color: var(--circuit-deep);
+  }
+
+  /* ── DECORATIVE LINES ──────────────────────────────────── */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--teal));
+  }
+
+  /* ── TYPOGRAPHY ────────────────────────────────────────── */
+  h1 {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+  h2 {
+    font-family: var(--sans);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+  }
+  h3 {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  h4 {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.6;
+  }
+  p { font-family: var(--sans); font-size: 15px; line-height: 1.7; }
+  .quote {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--gold);
+  }
+  .metric {
+    font-family: var(--sans);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.0;
+    color: var(--gold);
+  }
+  .code {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--teal);
+  }
+
+  /* ── COLORS ────────────────────────────────────────────── */
+  .gold    { color: var(--gold); }
+  .teal    { color: var(--teal); }
+  .terra   { color: var(--terracotta); }
+  .marble  { color: var(--marble-white); }
+  .dim     { opacity: 0.55; }
+
+  /* ── LAYOUT ────────────────────────────────────────────── */
+  .flex        { display: flex; }
+  .flex-col    { display: flex; flex-direction: column; }
+  .items-center { align-items: center; }
+  .justify-between { justify-content: space-between; }
+  .gap-8   { gap: 8px; }
+  .gap-16  { gap: 16px; }
+  .gap-24  { gap: 24px; }
+  .gap-32  { gap: 32px; }
+  .gap-40  { gap: 40px; }
+  .grid-2  { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3  { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+  /* ── SPACING ───────────────────────────────────────────── */
+  .mt-8  { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-32 { margin-top: 32px; }
+  .mt-40 { margin-top: 40px; }
+  .mt-56 { margin-top: 56px; }
+  .mt-64 { margin-top: 64px; }
+  .mb-8  { margin-bottom: 8px; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-24 { margin-bottom: 24px; }
+
+  /* ── DIVIDER ───────────────────────────────────────────── */
+  .divider {
+    height: 1px;
+    background: var(--divider-clr);
+    margin: 32px 0;
+  }
+  .divider--gold {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  /* ── BADGE ─────────────────────────────────────────────── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    border: 1px solid;
+  }
+  .badge--gold { color: var(--gold); border-color: var(--gold); }
+  .badge--teal { color: var(--teal); border-color: var(--teal); }
+  .badge--terra { color: var(--terracotta); border-color: var(--terracotta); }
+
+  /* ── CARD ──────────────────────────────────────────────── */
+  .card {
+    padding: 24px;
+    border-radius: 4px;
+    border-left: 3px solid var(--gold);
+    background: var(--card-bg);
+  }
+  .card--teal { border-left-color: var(--teal); }
+  .card--terra { border-left-color: var(--terracotta); }
+
+  /* ── COLOR SWATCH ──────────────────────────────────────── */
+  .swatch {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .swatch__color {
+    height: 100px;
+    width: 100%;
+  }
+  .swatch__info {
+    padding: 14px;
+    background: var(--swatch-info);
+  }
+  .swatch__name {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .swatch__hex {
+    font-family: var(--mono);
+    font-size: 15px;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+  .swatch__role {
+    font-family: var(--sans);
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* ── FONT DEMO ─────────────────────────────────────────── */
+  .font-demo {
+    padding: 20px 24px;
+    background: rgba(245,240,232,0.04);
+    border-radius: 4px;
+  }
+  .font-demo__label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--teal);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* ── DO / DON'T ────────────────────────────────────────── */
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .do-dont__block {
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .do-dont__block--do {
+    border-left: 3px solid #4CAF7D;
+    background: rgba(76,175,125,0.08);
+  }
+  .do-dont__block--dont {
+    border-left: 3px solid #E05454;
+    background: rgba(224,84,84,0.08);
+  }
+  .do-dont__label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .do-dont__block--do .do-dont__label { color: #4CAF7D; }
+  .do-dont__block--dont .do-dont__label { color: #E05454; }
+
+  /* ── PRINCIPLE ─────────────────────────────────────────── */
+  .principle {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--principle-sep);
+  }
+  .principle:last-child { border-bottom: none; }
+  .principle__num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--teal);
+    font-weight: 500;
+    min-width: 24px;
+    padding-top: 2px;
+  }
+  .principle__title {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .principle__text {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  /* ── FORBIDDEN WORD ────────────────────────────────────── */
+  .forbidden-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.2fr;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.07);
+    font-size: 13px;
+    align-items: center;
+  }
+  .forbidden-row:last-child { border-bottom: none; }
+  .forbidden-word {
+    color: #E05454;
+    font-family: var(--mono);
+    font-size: 12px;
+    text-decoration: line-through;
+    text-decoration-color: rgba(224,84,84,0.5);
+  }
+  .forbidden-why { opacity: 0.6; font-size: 12px; }
+  .forbidden-alt { color: #4CAF7D; font-size: 12px; }
+
+  /* ── PAGE NUM ──────────────────────────────────────────── */
+  .page-num {
+    position: absolute;
+    bottom: 32px;
+    right: 60px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+  .page-brand {
+    position: absolute;
+    bottom: 32px;
+    left: 60px;
+    font-family: var(--mono);
+    font-size: 11px;
+    opacity: 0.3;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* ── COVER DECORATION ──────────────────────────────────── */
+  .cover-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+    opacity: 0.08;
+  }
+
+  /* ── LOGO PLACEHOLDER ──────────────────────────────────── */
+  .logo-placeholder {
+    width: 180px;
+    height: 180px;
+    border-radius: 8px;
+    background: rgba(245,240,232,0.05);
+    border: 2px dashed rgba(201,168,76,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .logo-clearzone {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border: 1px dashed rgba(0,180,216,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+  .logo-clearzone::before {
+    content: 'ОХРАННАЯ ЗОНА';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    opacity: 0.6;
+  }
+
+  /* ── CHANNEL CARD ──────────────────────────────────────── */
+  .channel-card {
+    background: rgba(245,240,232,0.04);
+    border-radius: 6px;
+    padding: 24px;
+    border-top: 3px solid;
+  }
+  .channel-card--tg { border-top-color: var(--teal); }
+  .channel-card--reels { border-top-color: var(--terracotta); }
+  .channel-card__name {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .channel-card--tg .channel-card__name { color: var(--teal); }
+  .channel-card--reels .channel-card__name { color: var(--terracotta); }
+  .channel-rule {
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.8;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.07);
+    display: flex;
+    gap: 10px;
+  }
+  .channel-rule:last-child { border-bottom: none; }
+  .channel-rule::before {
+    content: '—';
+    opacity: 0.4;
+    flex-shrink: 0;
+  }
+
+  /* ── THEME TOGGLE ──────────────────────────────────────── */
+  #theme-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: var(--bg-page);
+    color: var(--gold);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    transition: background 0.3s, border-color 0.3s, transform 0.15s;
+  }
+  #theme-toggle:hover { transform: scale(1.1); }
+
+  /* ── LOGO IMAGE ────────────────────────────────────────── */
+  .logo-adam {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+  }
+  .cover-logo {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    opacity: 0.85;
+    border-radius: 8px;
+  }
+
+  /* ── PRINT ─────────────────────────────────────────────── */
+  @media print {
+    body { background: white; margin: 0; }
+    #theme-toggle { display: none; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      break-inside: avoid;
+      page-break-after: always;
+    }
+    @page { size: A4; margin: 0; }
+  }
+
+  @media screen {
+    body { padding: 32px 0; }
+    .page { box-shadow: var(--page-shadow); }
+  }
+
+  /* ── MOBILE ────────────────────────────────────────────── */
+  @media (max-width: 800px) {
+    body { padding: 0; }
+    .page {
+      width: 100%;
+      min-height: auto;
+      padding: 28px 20px 40px;
+      margin: 0 0 8px;
+      border-radius: 0;
+    }
+    h1 { font-size: 34px !important; }
+    h2 { font-size: 22px; }
+    h3 { font-size: 17px; }
+    .metric { font-size: 36px !important; }
+    .quote { font-size: 19px !important; }
+    .grid-2 { grid-template-columns: 1fr !important; }
+    .grid-3 { grid-template-columns: 1fr 1fr !important; }
+    .do-dont { grid-template-columns: 1fr; }
+    .forbidden-row { grid-template-columns: 1fr; gap: 4px; padding: 10px 0; }
+    .forbidden-row:not(:first-child) { border-top: 1px solid var(--divider-clr); }
+    .logo-clearzone { width: 100% !important; height: auto !important; padding: 20px; }
+    .logo-adam { max-width: 220px; margin: 0 auto; }
+    .cover-logo { position: static; width: 100%; max-width: 280px; transform: none;
+      margin: 20px auto 0; display: block; opacity: 0.9; }
+    .cover-ring { display: none; }
+    #theme-toggle { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 17px; }
+    .page-num, .page-brand { font-size: 9px; bottom: 16px; }
+    .page-num { right: 20px; }
+    .page-brand { left: 20px; }
+    .gap-40 { gap: 20px; }
+    .mt-64 { margin-top: 32px; }
+    .mt-56 { margin-top: 28px; }
+  }
+  @media (max-width: 480px) {
+    .grid-3 { grid-template-columns: 1fr !important; }
+    h1 { font-size: 28px !important; }
+    .page { padding: 24px 16px 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- тема переключатель -->
+<button id="theme-toggle" onclick="toggleTheme()" title="Переключить тему" aria-label="Переключить тему">🌙</button>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 1: COVER
+     ═══════════════════════════════════════════════════════ -->
+<div class="page" style="display:flex; flex-direction:column; justify-content:space-between;">
+  <!-- decorative rings -->
+  <div class="cover-ring" style="width:600px;height:600px;border-color:var(--gold);top:-200px;right:-200px;"></div>
+  <div class="cover-ring" style="width:400px;height:400px;border-color:var(--teal);top:-100px;right:-100px;"></div>
+  <div class="cover-ring" style="width:200px;height:200px;border-color:var(--terracotta);bottom:-60px;left:-60px;"></div>
+
+  <!-- логотип «Руки Адама» -->
+  <img src="logo.jpg" alt="Бизнес на нейронах — Руки Адама" class="cover-logo">
+
+  <div>
+    <div class="badge badge--gold mb-24">Брендбук v2.0</div>
+    <h1 style="font-size:64px; line-height:1.05;" class="gold">Бизнес<br>на нейронах</h1>
+    <p class="mt-24" style="font-family:var(--serif); font-size:28px; font-weight:300; font-style:italic; color:var(--marble-white); opacity:0.75; max-width:380px; line-height:1.4;">
+      Renaissance meets Futurism
+    </p>
+    <div class="divider--gold mt-40" style="height:1px; background:linear-gradient(90deg,var(--gold),transparent); width:120px;"></div>
+    <p class="mt-24" style="font-size:15px; opacity:0.55; max-width:300px; line-height:1.7;">
+      Визуальная идентичность и голос бренда.<br>Стандарты коммуникации для всех каналов.
+    </p>
+  </div>
+
+  <div>
+    <div class="divider" style="margin-bottom:24px;"></div>
+    <div class="flex justify-between items-center">
+      <div>
+        <p style="font-size:13px; opacity:0.5;">Версия</p>
+        <p class="gold" style="font-family:var(--mono); font-size:15px; font-weight:500;">v2.0</p>
+      </div>
+      <div style="text-align:center;">
+        <p style="font-size:13px; opacity:0.5;">Концепция</p>
+        <p class="gold" style="font-size:15px; font-weight:600;">Renaissance meets Futurism</p>
+      </div>
+      <div style="text-align:right;">
+        <p style="font-size:13px; opacity:0.5;">Дата</p>
+        <p style="font-family:var(--mono); font-size:15px;">12.06.2026</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">01</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 2: TABLE OF CONTENTS
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <h4 class="gold mb-16">Содержание</h4>
+  <h2 class="mt-8">Структура брендбука</h2>
+  <div class="divider mt-24"></div>
+
+  <div class="flex-col gap-8 mt-32">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(245,240,232,0.07);">
+      <div style="display:flex; gap:20px; align-items:baseline;">
+        <span class="code" style="color:var(--teal)">01</span>
+        <span style="font-size:17px; font-weight:500;">Философия бренда</span>
+      </div>
+      <span class="dim" style="font-family:var(--mono); font-size:12px;">Манифест · Brand Promise · Origin Story</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(245,240,232,0.07);">
+      <div style="display:flex; gap:20px; align-items:baseline;">
+        <span class="code" style="color:var(--teal)">02</span>
+        <span style="font-size:17px; font-weight:500;">Цветовая система</span>
+      </div>
+      <span class="dim" style="font-family:var(--mono); font-size:12px;">Палитра · Правила · Запреты</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(245,240,232,0.07);">
+      <div style="display:flex; gap:20px; align-items:baseline;">
+        <span class="code" style="color:var(--teal)">03</span>
+        <span style="font-size:17px; font-weight:500;">Типографика</span>
+      </div>
+      <span class="dim" style="font-family:var(--mono); font-size:12px;">Шрифты · Шкала · Правила</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(245,240,232,0.07);">
+      <div style="display:flex; gap:20px; align-items:baseline;">
+        <span class="code" style="color:var(--teal)">04</span>
+        <span style="font-size:17px; font-weight:500;">Логотип</span>
+      </div>
+      <span class="dim" style="font-family:var(--mono); font-size:12px;">Правила · Охранная зона · Запреты</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(245,240,232,0.07);">
+      <div style="display:flex; gap:20px; align-items:baseline;">
+        <span class="code" style="color:var(--teal)">05</span>
+        <span style="font-size:17px; font-weight:500;">Tone of Voice</span>
+      </div>
+      <span class="dim" style="font-family:var(--mono); font-size:12px;">12 принципов · Примеры</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(245,240,232,0.07);">
+      <div style="display:flex; gap:20px; align-items:baseline;">
+        <span class="code" style="color:var(--teal)">06</span>
+        <span style="font-size:17px; font-weight:500;">Запрещённые слова и образы</span>
+      </div>
+      <span class="dim" style="font-family:var(--mono); font-size:12px;">Словарь · Визуальные запреты</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0;">
+      <div style="display:flex; gap:20px; align-items:baseline;">
+        <span class="code" style="color:var(--teal)">07</span>
+        <span style="font-size:17px; font-weight:500;">Применение в каналах</span>
+      </div>
+      <span class="dim" style="font-family:var(--mono); font-size:12px;">Telegram · Reels · Документы</span>
+    </div>
+  </div>
+
+  <div class="divider mt-40"></div>
+  <div class="card card--teal mt-24" style="background:rgba(0,180,216,0.06);">
+    <p style="font-size:14px; line-height:1.7; color:var(--marble-white);">
+      Этот документ — операционный стандарт для всех, кто создаёт контент от имени Бизнес на нейронах.
+      Для создания контента также используйте <span class="code">design-tokens__20260612.json</span>
+      и <span class="code">agent-prompt-library__20260612.md</span>.
+    </p>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">02</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 3: PHILOSOPHY — MANIFEST
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="badge badge--gold mb-24">01 — Философия</div>
+
+  <h1 class="gold" style="font-size:48px;">Манифест</h1>
+
+  <div class="divider--gold mt-24" style="height:1px; background:linear-gradient(90deg,var(--gold),transparent); width:80px;"></div>
+
+  <div class="mt-32" style="max-width:520px;">
+    <p class="quote" style="font-size:24px; color:var(--marble-white); font-style:italic; font-weight:300; line-height:1.6;">
+      «Когда Микеланджело рисовал Сотворение Адама, он не изображал акт рождения. Он изображал момент передачи искры.»
+    </p>
+    <p class="mt-24" style="font-size:14px; line-height:1.8; opacity:0.75;">
+      Рука Творца и рука человека не касаются друг друга. Между ними — пространство.
+      Именно в этом пространстве живёт бренд Бизнес на нейронах.
+    </p>
+    <p class="mt-16" style="font-size:14px; line-height:1.8; opacity:0.75;">
+      Мы не автоматизируем бизнес. <strong style="color:var(--gold);">Мы передаём искру.</strong>
+    </p>
+    <p class="mt-16" style="font-size:14px; line-height:1.8; opacity:0.75;">
+      237 AI-агентов в нашей команде — не демонстрация технологии. Это доказательство концепции:
+      компания, которая живёт тем, что продаёт. Мы не рассказываем, как внедрить AI.
+      Мы показываем на своём примере, каждый день, каждым действием.
+    </p>
+  </div>
+
+  <div class="divider mt-40"></div>
+
+  <h3 class="gold mt-32">Система оппозиций</h3>
+  <p class="mt-8" style="font-size:13px; opacity:0.55;">Бренд существует в пространстве между двумя полюсами — не выбирает один из них.</p>
+
+  <div class="mt-24" style="display:grid; grid-template-columns:1fr auto 1fr; gap:0; align-items:stretch;">
+    <div style="padding:20px; background:rgba(201,168,76,0.07); border-radius:4px 0 0 4px;">
+      <div class="badge badge--gold mb-12" style="font-size:9px;">Ренессанс</div>
+      <div style="font-size:13px; line-height:1.9; opacity:0.8;">
+        Аналоговое, рукотворное<br>
+        Живое, органическое<br>
+        Медленное мастерство<br>
+        Гуманизм: человек в центре<br>
+        Классическая красота
+      </div>
+    </div>
+    <div style="width:3px; background:linear-gradient(180deg,var(--gold),var(--teal)); margin:0 -1px; flex-shrink:0;"></div>
+    <div style="padding:20px; background:rgba(0,180,216,0.07); border-radius:0 4px 4px 0;">
+      <div class="badge badge--teal mb-12" style="font-size:9px;">Футуризм</div>
+      <div style="font-size:13px; line-height:1.9; opacity:0.8;">
+        Цифровое, алгоритмическое<br>
+        Искусственное, механическое<br>
+        Скорость автоматизации<br>
+        Технологический детерминизм<br>
+        Функциональная точность
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-16" style="text-align:center; border-left:none; border-top:3px solid var(--gold); background:rgba(201,168,76,0.06);">
+    <p style="font-size:13px; font-weight:600; color:var(--gold);">Синтез БНН — точка касания, а не выбор полюса</p>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">03</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 4: PHILOSOPHY — BRAND PROMISE & ORIGIN
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="badge badge--gold mb-24">01 — Философия</div>
+
+  <div class="grid-2 gap-32 mt-8">
+    <div>
+      <h3 class="gold">Brand Promise</h3>
+      <div class="divider--gold mt-16" style="height:1px; background:linear-gradient(90deg,var(--gold),transparent); width:60px;"></div>
+      <p class="quote mt-24" style="font-size:22px; color:var(--gold);">
+        «Мастерство, усиленное технологией. Ты станешь сверхпредпринимателем.»
+      </p>
+      <p class="mt-20" style="font-size:13px; line-height:1.7; opacity:0.7;">
+        Конкретное обещание конкретному человеку: ты возьмёшь своё мастерство
+        и вложишь в него AI — результат превзойдёт то, что ты мог сделать в одиночку.
+      </p>
+      <div class="card card--teal mt-20" style="background:rgba(0,180,216,0.06);">
+        <div style="font-family:var(--mono); font-size:14px; color:var(--teal); font-weight:500;">
+          Человек + AI &gt; чистый AI
+        </div>
+        <div style="font-size:12px; opacity:0.6; margin-top:6px;">Метафора Каспарова — задокументированный факт</div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="terra">Origin Story CEO</h3>
+      <div class="divider--gold mt-16" style="height:1px; background:linear-gradient(90deg,var(--terracotta),transparent); width:60px;"></div>
+      <div class="mt-20" style="font-size:13px; line-height:1.9; opacity:0.8;">
+        <div style="display:flex; gap:12px; margin-bottom:12px;">
+          <span class="code" style="min-width:60px; color:var(--terracotta);">mid 2024</span>
+          <span>Бизнес закрылся. Не медленно — резко. Кризис.</span>
+        </div>
+        <div style="display:flex; gap:12px; margin-bottom:12px;">
+          <span class="code" style="min-width:60px; color:var(--terracotta);">дек 2025</span>
+          <span>Вплотную занялся AI. AI — не хайп, выход.</span>
+        </div>
+        <div style="display:flex; gap:12px; margin-bottom:12px;">
+          <span class="code" style="min-width:60px; color:var(--terracotta);">янв 2026</span>
+          <span>В полную силу. 20 лет опыта + AI.</span>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <span class="code" style="min-width:60px; color:var(--gold);">сейчас</span>
+          <span class="gold" style="font-weight:600;">237 AI-агентов. Работающая компания. Полгода.</span>
+        </div>
+      </div>
+      <div class="card card--terra mt-20" style="background:rgba(198,123,92,0.06); border-left-color:var(--terracotta);">
+        <p style="font-size:12px; line-height:1.6; opacity:0.75;">
+          Origin story — это зеркало аудитории: «Я был там, где ты сейчас. Вот что я сделал».
+          Использовать в постах Стадии 1 (по окну Овертона).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider mt-40"></div>
+
+  <h3 class="gold mt-32">Три архетипа бренда</h3>
+  <div class="grid-3 mt-20">
+    <div class="card" style="background:rgba(201,168,76,0.06);">
+      <div style="font-family:var(--mono); font-size:11px; color:var(--gold); margin-bottom:8px; text-transform:uppercase; letter-spacing:1.5px;">Архитектор</div>
+      <p style="font-size:13px; line-height:1.6; opacity:0.8;">Выстраивает систему целиком. Видит структуру. Управляет — не делает вручную.</p>
+    </div>
+    <div class="card" style="background:rgba(0,180,216,0.06); border-left-color:var(--teal);">
+      <div style="font-family:var(--mono); font-size:11px; color:var(--teal); margin-bottom:8px; text-transform:uppercase; letter-spacing:1.5px;">Практик</div>
+      <p style="font-size:13px; line-height:1.6; opacity:0.8;">237 агентов — живое доказательство, не теория. «Сначала делаем у себя».</p>
+    </div>
+    <div class="card" style="background:rgba(198,123,92,0.06); border-left-color:var(--terracotta);">
+      <div style="font-family:var(--mono); font-size:11px; color:var(--terracotta); margin-bottom:8px; text-transform:uppercase; letter-spacing:1.5px;">Наставник</div>
+      <p style="font-size:13px; line-height:1.6; opacity:0.8;">Прошёл через кризис → AI → результат. Ведёт других: точка А → точка Б.</p>
+    </div>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">04</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 5: COLOR SYSTEM
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="badge badge--teal mb-24">02 — Цветовая система</div>
+  <h2>Пять цветов. Каждый — с историей и ролью.</h2>
+  <p class="mt-12" style="font-size:14px; opacity:0.55;">Не декорация — система. Цвет несёт смысл.</p>
+
+  <div class="divider mt-24"></div>
+
+  <!-- Primary dark -->
+  <div class="mt-24" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div class="swatch">
+      <div class="swatch__color" style="background:#0A1628; border:1px solid rgba(245,240,232,0.12);"></div>
+      <div class="swatch__info">
+        <div class="swatch__name">Circuit Deep</div>
+        <div class="swatch__hex">#0A1628</div>
+        <div class="swatch__role">Основной тёмный фон. Глубина, серьёзность.</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch__color" style="background:#F5F0E8;"></div>
+      <div class="swatch__info" style="background:rgba(10,22,40,0.06);">
+        <div class="swatch__name" style="color:var(--circuit-deep);">Marble White</div>
+        <div class="swatch__hex" style="color:var(--circuit-deep); opacity:0.7;">#F5F0E8</div>
+        <div class="swatch__role" style="color:var(--circuit-deep);">Основной светлый фон. Тепло, классика.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accents -->
+  <div class="mt-16" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+    <div class="swatch">
+      <div class="swatch__color" style="background:#C9A84C;"></div>
+      <div class="swatch__info">
+        <div class="swatch__name" style="color:var(--gold);">Renaissance Gold</div>
+        <div class="swatch__hex">#C9A84C</div>
+        <div class="swatch__role">Мастерство, ценность. Заголовки, цифры.</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch__color" style="background:#00B4D8;"></div>
+      <div class="swatch__info">
+        <div class="swatch__name" style="color:var(--teal);">Neural Teal</div>
+        <div class="swatch__hex" style="color:var(--teal);">#00B4D8</div>
+        <div class="swatch__role">AI, агенты, технология. Только для цифрового слоя.</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch__color" style="background:#C67B5C;"></div>
+      <div class="swatch__info">
+        <div class="swatch__name" style="color:var(--terracotta);">Fresco Terracotta</div>
+        <div class="swatch__hex" style="color:var(--terracotta);">#C67B5C</div>
+        <div class="swatch__role">Человек, история, команда.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider mt-32"></div>
+
+  <h3 class="mt-24">Правила применения</h3>
+  <div class="mt-20" style="font-size:13px; line-height:1.8; display:flex; flex-direction:column; gap:8px;">
+    <div style="display:flex; gap:12px; align-items:flex-start;">
+      <span class="code" style="color:var(--gold); font-size:11px; min-width:16px; margin-top:2px;">▸</span>
+      <span style="opacity:0.8;"><strong class="gold">Gold</strong> — заголовки на тёмном фоне, ключевые цифры кейсов, иконки. Никогда — большой фоновый блок.</span>
+    </div>
+    <div style="display:flex; gap:12px; align-items:flex-start;">
+      <span class="code" style="color:var(--teal); font-size:11px; min-width:16px; margin-top:2px;">▸</span>
+      <span style="opacity:0.8;"><strong class="teal">Teal</strong> — только AI и агенты. Запрещён в контекстах про людей, историю, ценности.</span>
+    </div>
+    <div style="display:flex; gap:12px; align-items:flex-start;">
+      <span class="code" style="color:var(--terracotta); font-size:11px; min-width:16px; margin-top:2px;">▸</span>
+      <span style="opacity:0.8;"><strong class="terra">Terracotta</strong> — только человеческие контексты: CEO, команда, origin story.</span>
+    </div>
+    <div style="display:flex; gap:12px; align-items:flex-start; color:#E05454;">
+      <span style="font-size:11px; min-width:16px; margin-top:2px;">✕</span>
+      <span>Gold + Teal в равных долях — запрещено. Один всегда доминирует, второй — акцент.</span>
+    </div>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">05</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 6: TYPOGRAPHY
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="badge badge--gold mb-24">03 — Типографика</div>
+  <h2>Два шрифта. Вместе — система.</h2>
+
+  <div class="divider mt-24"></div>
+
+  <!-- Font showcases -->
+  <div class="mt-32" style="display:flex; flex-direction:column; gap:20px;">
+    <div class="font-demo">
+      <div class="font-demo__label">Cormorant Garamond — H1, цитаты, эпиграфы</div>
+      <div style="font-family:var(--serif); font-size:42px; font-weight:400; line-height:1.2; color:var(--gold);">
+        Мастерство, усиленное<br>технологией
+      </div>
+      <div style="font-family:var(--serif); font-size:24px; font-weight:300; font-style:italic; opacity:0.65; margin-top:8px;">
+        Renaissance meets Futurism — вечное напряжение
+      </div>
+    </div>
+
+    <div class="font-demo" style="background:rgba(0,180,216,0.04);">
+      <div class="font-demo__label">Space Grotesk — тело текста, UI, метрики</div>
+      <div style="font-family:var(--sans); font-size:28px; font-weight:700; line-height:1.3;">
+        Архитектор. Практик. Наставник.
+      </div>
+      <div style="font-family:var(--sans); font-size:15px; font-weight:400; opacity:0.7; margin-top:8px; line-height:1.7;">
+        Клиент сэкономил 40 часов в неделю: убрали ручную обработку заявок через агента. Стоимость — 20 000 рублей в месяц.
+      </div>
+      <div style="display:flex; gap:32px; margin-top:16px;">
+        <div>
+          <div style="font-family:var(--sans); font-size:44px; font-weight:700; line-height:1; color:var(--gold);">237</div>
+          <div style="font-size:12px; opacity:0.5; margin-top:4px;">AI-агентов</div>
+        </div>
+        <div>
+          <div style="font-family:var(--sans); font-size:44px; font-weight:700; line-height:1; color:var(--teal);">40ч</div>
+          <div style="font-size:12px; opacity:0.5; margin-top:4px;">сэкономлено</div>
+        </div>
+        <div>
+          <div style="font-family:var(--sans); font-size:44px; font-weight:700; line-height:1;">6мес</div>
+          <div style="font-size:12px; opacity:0.5; margin-top:4px;">от нуля</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider mt-32"></div>
+
+  <h3 class="mt-24">Шкала размеров</h3>
+  <div class="mt-16" style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:12px; line-height:1.8; opacity:0.8;">
+    <div><span class="code" style="color:var(--gold);">H1</span> — Cormorant Garamond, 48px, Regular</div>
+    <div><span class="code" style="color:var(--teal);">Body</span> — Space Grotesk, 16px, Regular</div>
+    <div><span class="code" style="color:var(--gold);">H2</span> — Space Grotesk, 32px, Bold</div>
+    <div><span class="code" style="color:var(--teal);">Caption</span> — Space Grotesk, 13px, Regular</div>
+    <div><span class="code" style="color:var(--gold);">H3</span> — Space Grotesk, 24px, Medium</div>
+    <div><span class="code" style="color:var(--teal);">Metric</span> — Space Grotesk, 36px+, Bold</div>
+    <div><span class="code" style="color:var(--gold);">Quote</span> — Cormorant Garamond, 28px, Light Italic</div>
+    <div><span class="code" style="color:var(--teal);">Code</span> — JetBrains Mono, 13px</div>
+  </div>
+
+  <div class="card mt-20" style="background:rgba(224,84,84,0.06); border-left-color:#E05454;">
+    <p style="font-size:13px; line-height:1.6; color:#E05454;">
+      <strong>Запрещено:</strong> Cormorant Garamond Bold Italic — теряет изящество. Смешивать шрифты в одном заголовке. H1 меньше 32px.
+    </p>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">06</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 7: LOGO
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="badge badge--gold mb-24">04 — Логотип</div>
+  <h2>Сотворение Адама. Момент передачи искры.</h2>
+
+  <div class="divider mt-24"></div>
+
+  <div class="grid-2 mt-32 gap-40">
+    <div>
+      <div class="logo-clearzone" style="width:320px; height:320px;">
+        <img src="logo.jpg" alt="Логотип БНН — Руки Адама" class="logo-adam" style="max-width:240px;">
+      </div>
+      <p class="mt-12" style="font-size:11px; opacity:0.5; text-align:center;">
+        bnn_logo_adam_v1.jpg · Renaissance meets Futurism
+      </p>
+    </div>
+
+    <div>
+      <h3 class="gold">Анатомия логотипа</h3>
+      <div class="mt-16" style="display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; gap:12px; align-items:center;">
+          <div style="width:20px; height:20px; background:var(--gold); border-radius:2px; flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px; font-weight:600; color:var(--gold);">Рука человека</div>
+            <div style="font-size:12px; opacity:0.6;">Renaissance Gold #C9A84C</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <div style="width:20px; height:20px; background:var(--teal); border-radius:2px; flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px; font-weight:600; color:var(--teal);">Рука механическая</div>
+            <div style="font-size:12px; opacity:0.6;">Neural Teal #00B4D8 — неизменен абсолютно</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <div style="width:20px; height:20px; background:transparent; border:2px dashed rgba(245,240,232,0.4); border-radius:2px; flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:13px; font-weight:600;">Пространство между</div>
+            <div style="font-size:12px; opacity:0.6;">Метафора БНН. Там живёт бренд.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider mt-24"></div>
+
+      <h3 class="mt-24">Технические требования</h3>
+      <div class="mt-12" style="font-size:13px; line-height:1.9; opacity:0.8;">
+        <div>Охранная зона: <span class="gold">высота одной руки</span> со всех сторон</div>
+        <div>Мин. размер цифровой: <span class="teal">120px</span></div>
+        <div>Мин. размер печать: <span class="teal">25mm</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider mt-32"></div>
+
+  <h3 class="mt-24" style="color:#E05454;">Запрещённые трансформации</h3>
+  <div class="mt-16" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+    <div style="padding:14px; background:rgba(224,84,84,0.06); border-radius:4px; font-size:12px; text-align:center; line-height:1.6; opacity:0.8;">Тень или свечение</div>
+    <div style="padding:14px; background:rgba(224,84,84,0.06); border-radius:4px; font-size:12px; text-align:center; line-height:1.6; opacity:0.8;">Поворот или деформация</div>
+    <div style="padding:14px; background:rgba(224,84,84,0.06); border-radius:4px; font-size:12px; text-align:center; line-height:1.6; opacity:0.8;">Перекраска Teal-руки</div>
+    <div style="padding:14px; background:rgba(224,84,84,0.06); border-radius:4px; font-size:12px; text-align:center; line-height:1.6; opacity:0.8;">Растяжение пропорций</div>
+    <div style="padding:14px; background:rgba(224,84,84,0.06); border-radius:4px; font-size:12px; text-align:center; line-height:1.6; opacity:0.8;">Текст поверх логотипа</div>
+    <div style="padding:14px; background:rgba(224,84,84,0.06); border-radius:4px; font-size:12px; text-align:center; line-height:1.6; opacity:0.8;">Низкое разрешение</div>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">07</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 8: TONE OF VOICE — CORE
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="badge badge--gold mb-24">05 — Tone of Voice</div>
+  <h2>Голос бренда</h2>
+  <p class="mt-12" style="font-size:15px; opacity:0.6; font-family:var(--serif); font-style:italic;">
+    Прямой. Практичный. Честный. Без пафоса. Уважительный.
+  </p>
+
+  <div class="divider mt-24"></div>
+
+  <div class="mt-24" style="display:flex; flex-direction:column;">
+    <div class="principle">
+      <div class="principle__num">01</div>
+      <div>
+        <div class="principle__title">Сначала вывод, потом обоснование</div>
+        <div class="principle__text">Не подводи читателя к мысли — скажи её сразу, потом объясни.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">02</div>
+      <div>
+        <div class="principle__title">Конкретика, не декларации</div>
+        <div class="principle__text">Если есть число — называй число. «Значительно» — не слово для БНН.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">03</div>
+      <div>
+        <div class="principle__title">Признание ограничений — это сила</div>
+        <div class="principle__text">Честность про ограничения — признак зрелости, а не уязвимость.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">04</div>
+      <div>
+        <div class="principle__title">Никакого AI-хайпа</div>
+        <div class="principle__text">Запрещены: «революционный», «прорывной», «меняет всё», «будущее уже здесь».</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">05</div>
+      <div>
+        <div class="principle__title">Уважение без менторства</div>
+        <div class="principle__text">Аудитория — предприниматели. Говори как равный с равным, не как ментор с кафедры.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">06</div>
+      <div>
+        <div class="principle__title">237 агентов — аргумент, не украшение</div>
+        <div class="principle__text">Цифра появляется только там, где доказывает что-то конкретное.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">08</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 9: TONE OF VOICE — PRINCIPLES 7–12
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="badge badge--gold mb-24">05 — Tone of Voice</div>
+  <h2>12 принципов голоса (продолжение)</h2>
+
+  <div class="divider mt-24"></div>
+
+  <div class="mt-24" style="display:flex; flex-direction:column;">
+    <div class="principle">
+      <div class="principle__num">07</div>
+      <div>
+        <div class="principle__title">CEO — практик, не гуру</div>
+        <div class="principle__text">«Я иду впереди не потому что умнее — а потому что начал раньше».</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">08</div>
+      <div>
+        <div class="principle__title">Кейс — это история, не список функций</div>
+        <div class="principle__text">Проблема → агент → измеримый результат. Функции — внутри, не снаружи.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">09</div>
+      <div>
+        <div class="principle__title">Короткие предложения — не правило, а сигнал</div>
+        <div class="principle__text">Когда мысль важная — делай предложение коротким. Пауза работает на акцент.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">10</div>
+      <div>
+        <div class="principle__title">Запрет на заискивание</div>
+        <div class="principle__text">Никаких 🙏, «благодарим за доверие». Бренд говорит с позиции результата.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">11</div>
+      <div>
+        <div class="principle__title">Urgency — «сейчас то самое время»</div>
+        <div class="principle__text">Urgency + конкретный шаг = мотивация. Urgency без пути = манипуляция.</div>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle__num">12</div>
+      <div>
+        <div class="principle__title">Экономический язык</div>
+        <div class="principle__text">ROI, время, рубли. «Значительная экономия» — запрещено. Только конкретные числа.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider mt-24"></div>
+
+  <h3 class="mt-24">Примеры: до и после</h3>
+  <div class="mt-16 do-dont">
+    <div class="do-dont__block do-dont__block--dont">
+      <div class="do-dont__label">✕ Нельзя</div>
+      «Революционная AI-платформа, которая полностью трансформирует ваш бизнес.»
+    </div>
+    <div class="do-dont__block do-dont__block--do">
+      <div class="do-dont__label">✓ Правильно</div>
+      «Платформа, в которой работают 237 AI-агентов. На нашем же бизнесе.»
+    </div>
+    <div class="do-dont__block do-dont__block--dont">
+      <div class="do-dont__label">✕ Нельзя</div>
+      «Многие предприниматели сталкиваются с нехваткой времени на рутину...»
+    </div>
+    <div class="do-dont__block do-dont__block--do">
+      <div class="do-dont__label">✓ Правильно</div>
+      «Рутина убивает время. Вот 3 задачи, которые автоматизируем за неделю.»
+    </div>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">09</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 10: FORBIDDEN WORDS & IMAGES
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="badge mb-24" style="color:#E05454; border-color:#E05454;">06 — Запрещённые элементы</div>
+  <h2>Словарь и визуальные запреты</h2>
+
+  <div class="divider mt-24"></div>
+
+  <!-- Forbidden words table -->
+  <h3 class="mt-24 gold">Запрещённые слова и фразы</h3>
+  <div class="mt-16" style="background:rgba(245,240,232,0.03); border-radius:4px; padding:4px 16px;">
+    <div class="forbidden-row" style="opacity:0.5; font-size:11px; padding-bottom:8px; border-bottom:1px solid rgba(245,240,232,0.15);">
+      <span>Запрещено</span><span>Почему</span><span>Альтернатива</span>
+    </div>
+    <div class="forbidden-row">
+      <span class="forbidden-word">революционный / прорывной</span>
+      <span class="forbidden-why">AI-хайп, банально</span>
+      <span class="forbidden-alt">конкретный результат</span>
+    </div>
+    <div class="forbidden-row">
+      <span class="forbidden-word">трансформирует / меняет всё</span>
+      <span class="forbidden-why">нет измерения</span>
+      <span class="forbidden-alt">«сэкономит X часов»</span>
+    </div>
+    <div class="forbidden-row">
+      <span class="forbidden-word">полностью автоматизирует</span>
+      <span class="forbidden-why">необоснованное обещание</span>
+      <span class="forbidden-alt">«берёт [конкретную задачу]»</span>
+    </div>
+    <div class="forbidden-row">
+      <span class="forbidden-word">лидер мнений / эксперт</span>
+      <span class="forbidden-why">самоназначение</span>
+      <span class="forbidden-alt">«вот что мы сделали»</span>
+    </div>
+    <div class="forbidden-row">
+      <span class="forbidden-word">инновационный</span>
+      <span class="forbidden-why">пустое слово</span>
+      <span class="forbidden-alt">конкретная технология</span>
+    </div>
+    <div class="forbidden-row">
+      <span class="forbidden-word">экосистема</span>
+      <span class="forbidden-why">перегрето на рынке РФ</span>
+      <span class="forbidden-alt">«платформа», «компания»</span>
+    </div>
+    <div class="forbidden-row">
+      <span class="forbidden-word">🔥 💯 🚀 🙏 😍 🥳 💸</span>
+      <span class="forbidden-why">детский / инфантильный тон</span>
+      <span class="forbidden-alt">🧠 ⚡ 🎯 💡 📌 ✅ →</span>
+    </div>
+    <div class="forbidden-row">
+      <span class="forbidden-word">без выходных / без декретов</span>
+      <span class="forbidden-why">апелляция к замене людей</span>
+      <span class="forbidden-alt">«агенты берут рутину 24/7»</span>
+    </div>
+  </div>
+
+  <div class="divider mt-24"></div>
+
+  <h3 class="mt-24 gold">Запрещённые визуальные образы</h3>
+  <div class="mt-16 grid-2 gap-16">
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <div class="card" style="background:rgba(224,84,84,0.05); border-left-color:#E05454; padding:12px 16px;">
+        <p style="font-size:13px; color:#E05454; opacity:0.9;">Синие нейронные сети с CGI-эффектами</p>
+      </div>
+      <div class="card" style="background:rgba(224,84,84,0.05); border-left-color:#E05454; padding:12px 16px;">
+        <p style="font-size:13px; color:#E05454; opacity:0.9;">Роботы со светящимися / красными глазами</p>
+      </div>
+      <div class="card" style="background:rgba(224,84,84,0.05); border-left-color:#E05454; padding:12px 16px;">
+        <p style="font-size:13px; color:#E05454; opacity:0.9;">Иконки «мозг с микросхемой»</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <div class="card" style="background:rgba(224,84,84,0.05); border-left-color:#E05454; padding:12px 16px;">
+        <p style="font-size:13px; color:#E05454; opacity:0.9;">Стоковые «бизнесмены смотрят в будущее»</p>
+      </div>
+      <div class="card" style="background:rgba(224,84,84,0.05); border-left-color:#E05454; padding:12px 16px;">
+        <p style="font-size:13px; color:#E05454; opacity:0.9;">Futuristic corporate: шары, полупрозрачные поверхности</p>
+      </div>
+      <div class="card" style="background:rgba(76,175,125,0.06); border-left-color:#4CAF7D; padding:12px 16px;">
+        <p style="font-size:13px; color:#4CAF7D; opacity:0.9;">✓ Руки: человеческая + механическая</p>
+        <p style="font-size:12px; color:#4CAF7D; opacity:0.6; margin-top:4px;">Рабочие процессы, детали, схемы</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">10</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 11: CHANNEL APPLICATIONS
+     ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="badge badge--teal mb-24">07 — Применение в каналах</div>
+  <h2>Telegram, Reels, Документы</h2>
+
+  <div class="divider mt-24"></div>
+
+  <div class="mt-32" style="display:flex; flex-direction:column; gap:20px;">
+    <!-- Telegram -->
+    <div class="channel-card channel-card--tg">
+      <div class="channel-card__name">Telegram — @biznaneyronah</div>
+      <div class="channel-rule">Длина поста: 800–1500 символов. Одна мысль — один пост.</div>
+      <div class="channel-rule">Структура: вывод → обоснование → CTA или вопрос.</div>
+      <div class="channel-rule">Эмодзи: максимум 7, только разрешённые (🧠 ⚡ 🎯 💡 📌 ✅ →).</div>
+      <div class="channel-rule">Заголовок поста: первые 2 строки — крючок, без лишних слов.</div>
+      <div class="channel-rule">Цифры — всегда конкретные: «40 часов», «20 000 рублей», «174 секунды».</div>
+      <div class="channel-rule">CTA в конце: вопрос / ссылка / приглашение в комментарии — не «купите прямо сейчас».</div>
+    </div>
+
+    <!-- Reels -->
+    <div class="channel-card channel-card--reels">
+      <div class="channel-card__name">Instagram / VK Reels</div>
+      <div class="channel-rule">Формат обложки: Circuit Deep (#0A1628) фон, Gold заголовок — Cormorant Garamond 48px+.</div>
+      <div class="channel-rule">Структура видео: 3 сек — проблема / крючок, основная часть, финальный результат в цифрах.</div>
+      <div class="channel-rule">Субтитры — обязательны. Шрифт Space Grotesk Bold, тёмный фон-подложка.</div>
+      <div class="channel-rule">Neural Teal — для технических элементов (схемы агентов, данные). Terracotta — для CEO-контента.</div>
+      <div class="channel-rule">Длительность: 60–90 сек. Крючок — в первые 3 секунды.</div>
+    </div>
+
+    <!-- Documents -->
+    <div class="channel-card" style="border-top-color:var(--gold);">
+      <div class="channel-card__name" style="color:var(--gold);">PDF-документы и КП</div>
+      <div class="channel-rule">Фон первой страницы: Circuit Deep. Остальные — чередование Dark/Light.</div>
+      <div class="channel-rule">Заголовок — Cormorant Garamond Gold. Текст — Space Grotesk Marble White / Circuit Deep.</div>
+      <div class="channel-rule">Метрики и ROI — крупно, Space Grotesk Bold, Gold или Teal по смыслу.</div>
+      <div class="channel-rule">Юрлицо в подвале: ИП Галанкин Роман Александрович (не Кредо-Сервис).</div>
+    </div>
+  </div>
+
+  <div class="divider mt-24"></div>
+
+  <!-- Emoji palette block -->
+  <div class="mt-24 flex gap-16 items-center">
+    <h3>Разрешённые эмодзи</h3>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-left:8px;">
+      <div style="background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); border-radius:4px; padding:6px 12px; font-size:18px; text-align:center;">🧠</div>
+      <div style="background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); border-radius:4px; padding:6px 12px; font-size:18px; text-align:center;">⚡</div>
+      <div style="background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); border-radius:4px; padding:6px 12px; font-size:18px; text-align:center;">🎯</div>
+      <div style="background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); border-radius:4px; padding:6px 12px; font-size:18px; text-align:center;">💡</div>
+      <div style="background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); border-radius:4px; padding:6px 12px; font-size:18px; text-align:center;">📌</div>
+      <div style="background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); border-radius:4px; padding:6px 12px; font-size:18px; text-align:center;">✅</div>
+      <div style="background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); border-radius:4px; padding:6px 12px; font-size:18px; text-align:center; font-family:var(--mono); font-size:16px; color:var(--gold);">→</div>
+    </div>
+  </div>
+
+  <div class="page-brand">Бизнес на нейронах — Брендбук v2.0</div>
+  <div class="page-num">11</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 12: QUICK REFERENCE (last page)
+     ═══════════════════════════════════════════════════════ -->
+<div class="page" style="background:var(--circuit-deep);">
+  <div class="badge badge--gold mb-24">Быстрый справочник</div>
+  <h2>Всё главное на одной странице</h2>
+
+  <div class="divider mt-24"></div>
+
+  <div class="mt-24 grid-2 gap-24">
+    <div>
+      <h4 class="gold mb-16">Цвета</h4>
+      <div style="display:flex; flex-direction:column; gap:8px; font-family:var(--mono); font-size:12px;">
+        <div style="display:flex; gap:10px; align-items:center;">
+          <div style="width:12px; height:12px; background:#0A1628; border:1px solid rgba(245,240,232,0.3); border-radius:2px;"></div>
+          <span>#0A1628</span><span style="opacity:0.5;">Circuit Deep</span>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <div style="width:12px; height:12px; background:#F5F0E8; border-radius:2px;"></div>
+          <span>#F5F0E8</span><span style="opacity:0.5;">Marble White</span>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <div style="width:12px; height:12px; background:#C9A84C; border-radius:2px;"></div>
+          <span class="gold">#C9A84C</span><span style="opacity:0.5;">Renaissance Gold</span>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <div style="width:12px; height:12px; background:#00B4D8; border-radius:2px;"></div>
+          <span class="teal">#00B4D8</span><span style="opacity:0.5;">Neural Teal</span>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <div style="width:12px; height:12px; background:#C67B5C; border-radius:2px;"></div>
+          <span class="terra">#C67B5C</span><span style="opacity:0.5;">Fresco Terracotta</span>
+        </div>
+      </div>
+
+      <h4 class="gold mt-24 mb-16">Шрифты</h4>
+      <div style="font-size:12px; line-height:1.9; opacity:0.8;">
+        <div><span style="font-family:var(--serif);">Cormorant Garamond</span> — H1, цитаты</div>
+        <div><span style="font-family:var(--sans);">Space Grotesk</span> — текст, UI, цифры</div>
+        <div><span style="font-family:var(--mono); color:var(--teal);">JetBrains Mono</span> — код, данные</div>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="gold mb-16">12 принципов ToV</h4>
+      <div style="font-size:11px; line-height:1.9; opacity:0.75;">
+        1. Сначала вывод<br>
+        2. Конкретика, не декларации<br>
+        3. Ограничения — сила<br>
+        4. Без AI-хайпа<br>
+        5. Равный с равным<br>
+        6. 237 — аргумент, не украшение<br>
+        7. CEO — практик<br>
+        8. Кейс — история<br>
+        9. Короткие предложения — акцент<br>
+        10. Без заискивания<br>
+        11. Urgency — точка входа<br>
+        12. Экономический язык
+      </div>
+
+      <h4 class="gold mt-20 mb-12">Brand Promise</h4>
+      <p style="font-family:var(--serif); font-size:16px; font-style:italic; color:var(--gold); line-height:1.5;">
+        «Мастерство, усиленное технологией. Ты станешь сверхпредпринимателем.»
+      </p>
+    </div>
+  </div>
+
+  <div class="divider mt-32"></div>
+
+  <div class="mt-20" style="text-align:center; opacity:0.4; font-size:12px; font-family:var(--mono);">
+    Бизнес на нейронах · Брендбук v2.0 · Renaissance meets Futurism · 2026
+  </div>
+
+  <div class="page-num">12</div>
+</div>
+
+<script>
+  (function() {
+    var STORAGE_KEY = 'bnn-theme';
+    var btn = document.getElementById('theme-toggle');
+
+    function autoTheme() {
+      var h = new Date().getHours();
+      return (h >= 6 && h < 21) ? 'light' : 'dark';
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme') || autoTheme();
+      var next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem(STORAGE_KEY, next);
+      applyTheme(next);
+    }
+
+    window.toggleTheme = toggleTheme;
+
+    // init: saved preference > auto by time
+    var saved = localStorage.getItem(STORAGE_KEY);
+    applyTheme(saved || autoTheme());
+  })();
+</script>
+</body>
+</html>
